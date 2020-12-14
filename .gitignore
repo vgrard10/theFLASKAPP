@@ -1,0 +1,14 @@
+# ignore all Python compiled file
+*.pyc
+
+# ignore the virtual env (the user will create it and install packages from requirements.txt)
+myenv/
+
+# ignore all __pycache__ folders
+__pycache__
+
+# from Mac
+.DS_Store
+
+# from pyenv
+.python-version

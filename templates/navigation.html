@@ -1,0 +1,30 @@
+{# Highlighting Active Menu Item
+Often you want to have a navigation bar with an active navigation item. This is really simple to achieve. Because assignments outside of blocks in child templates are global and executed before the layout template is evaluated it’s possible to define the active menu item in the child template #}
+
+{# path/href, id, caption #}
+{% set navigation_bar = [
+    ('/', 'index', 'Welcome'),
+    ('/predict', 'predict', 'Predict'),
+    ('/results', 'results', 'Results'),
+    ('/users', 'users', 'Users')
+] -%}
+
+{% set active_page = active_page|default('index') -%}
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Titanic Predictions</a>
+    </div>
+
+    <ul id="navigation" class="nav navbar-nav">
+    {% for href, id, caption in navigation_bar %}
+      <li {% if id == active_page %} class="active" {% endif %}>
+        <a href="{{ href }}">{{ caption }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+

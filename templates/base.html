@@ -1,0 +1,27 @@
+{# The html comment tag <!-- ... --> does not work in a jinja template but this does #}
+
+{# extends declares that this template inherits from bootstrap/base template where blocks'content can be overriden #}
+{% extends "bootstrap/base.html" %}
+
+{# example of block to (re)define, check Bootstrap template #}
+{% block title %}My Flask App{% endblock %}
+
+{% block navbar %}
+	{% include 'navigation.html' %}
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		{# for the messages that get flashed  #}
+		{% for message in get_flashed_messages() %}
+		<div class="alert alert-warning">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			{{ message }}
+		</div>
+		{% endfor %}
+
+		{# Here i define a brand new block and a child template inheriting from this template will later fill it by redeclaring it #}
+		{% block page_content %}
+		{% endblock %}
+	</div>
+{% endblock %}

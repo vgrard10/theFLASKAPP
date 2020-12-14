@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% set active_page = 'results' -%}
+
+{# you can create your own 'functions' also named as 'macros' #}
+{# to create a macro:
+	- you can use the {% macro function(param) %} block definition and later use it within a {{}}
+	- or you can define multiple macros in a dedicated template .html file then import it within this template using the {% import ..... as alias %} block definition  
+#}
+
+
+{% block page_content %}
+
+
+{% if success == 'first' %}
+	<div class="alert alert-info" role="alert">
+	  <h4 class="alert-heading">Write your info first!</h4>
+	  <p> You have to write your name first in the predictions section to have a result  and i really try to write a lot of useless text to have this banner big enough.</p>
+	  <hr>
+	  <p class="mb-0">I could have also wrote some Lorem ipsum but... come on !</p>
+	</div>
+{% elif success %}
+	<div class="alert alert-success" role="alert">
+	  <h4 class="alert-heading">Well done!</h4>
+	  <p> You can be very happy, you survived to the Titanic. But Titanic was long ago so this was only a story, and i really try to write a lot of useless text to have this banner big enough.</p>
+	  <hr>
+	  <p class="mb-0">I could have also wrote some Lorem ipsum but... come on !</p>
+	</div>
+{% else %}
+	<div class="alert alert-danger" role="alert">
+	  <h4 class="alert-heading">You didn't make it :-( !</h4>
+	  <p> I'm sorry but you didn't make it safe back to your country, you didn't survived to the Titanic. But Titanic was long ago so this was only a story, and i really try to write a lot of useless text to have this banner big enough.</p>
+	  <hr>
+	  <p class="mb-0">I could have also wrote some Lorem ipsum but... come on !</p>
+	</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% set active_page = 'predict' -%}
+
+{# you can create your own 'functions' also named as 'macros' #}
+{# to create a macro:
+	- you can use the {% macro function(param) %} block definition and later use it within a {{}}
+	- or you can define multiple macros in a dedicated template .html file then import it within this template using the {% import ..... as alias %} block definition  
+#}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+
+	<div class="page-header">
+	    <h1>Fill in the form and see if you survive !</h1>
+	</div>
+
+{# wtf.quick_form() to render the form object using default Bootstrap styles #}
+{{ wtf.quick_form(form) }}
+
+{% endblock %}
