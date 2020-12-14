@@ -1,0 +1,14 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment: 
+      - POSTGRES_USER="username"
+      - POSTGRES_PASSWORD="password"
+      - POSTGRES_DB="database"
+      - POSTGRES_SECRET_KEY="SECRET_KEY"
+  flaskapp:
+    image: flaskapp
+    ports:
+      - "5000:5000"
