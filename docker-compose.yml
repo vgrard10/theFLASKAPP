@@ -1,14 +1,15 @@
-version: '3.6'
+version: '3.8'
 services:
   postgres:
     image: postgres
-    restart: always
+  flaskapp:
+    build: .
     environment: 
       - POSTGRES_USER="username"
       - POSTGRES_PASSWORD="password"
       - POSTGRES_DB="database"
       - POSTGRES_SECRET_KEY="SECRET_KEY"
-  flaskapp:
-    image: flaskapp
     ports:
       - "5000:5000"
+    depends_on:
+      - postgres

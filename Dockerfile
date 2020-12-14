@@ -16,6 +16,4 @@ ENTRYPOINT ["/scripts/wait-for-it.sh", "db:5432", "--"]
 
 EXPOSE 5000
 
-ADD . .
-
 CMD ["python", "app.py","runserver","--host=0.0.0.0","--threaded"]
